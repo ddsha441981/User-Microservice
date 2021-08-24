@@ -1,0 +1,25 @@
+server:
+  port: 8999
+
+eureka:
+  instance:
+    hostname: localhost
+
+
+spring:
+  application:
+    name: API-GETEWAY
+  cloud:
+    geteway:
+      routes:
+        - id: User-Service
+          uri: lb://user-service
+          predicates:
+            - Path=/user/**
+        - id: Contact-Service
+          uri: lb://contact-service
+          predicates:
+            - Path=/contacts/**
+
+
+
